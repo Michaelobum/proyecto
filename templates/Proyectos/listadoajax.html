@@ -1,0 +1,4 @@
+<h1>MODAL TRAIDO CON <b>AJAX</b></h1><br>
+<i class="fa fa-user-circle"></i> {{ Proyectos.nombre_proyecto }}<br>
+<i class="fa fa-address-card"></i> {{ Proyectos.lider  }}<br>
+<i class="fa fa-address-card"></i> {% for encargado in proyecto.encargados %}{{ encargado.nombres }}{% endfor %}<br>
