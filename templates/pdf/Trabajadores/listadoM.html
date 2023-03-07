@@ -60,7 +60,7 @@
     <div class="right-invoice">
         <section id="invoice-title-number">
             <div class="title-top">
-                <h1 style="font-size: 2em">Listado De Marcas</h1>
+                <h1 style="font-size: 2em">Listado De Trabajadores</h1>
             </div>
         </section>
         <section id="items">
@@ -68,24 +68,20 @@
                 <thead style="background-color: #333333">
                 <tr style="font-size: 20px;">
                     <th style="text-align: center; width: 20%; background-color: #3498DB;" >
-                        Descripcion
+                        #
                     </th>
                     <th style="text-align: center; width: 20%; background-color: #3498DB;" >
-                        Medio De Pago
+                        Nombres
                     </th>
                 </tr>
                 </thead>
                 <tbody>
-        {% for l in listado %}
-            <tr>
-                <td style="text-align: center">{{ l.descripcion }}</td>
-                <td style="text-align: center">
-                    {% for elemento in  l.mediopago.all %}
-                        <span class="label label-info"> {{ elemento }}</span>
-                    {% endfor %}
-                </td>
-                </tr>
-            {% endfor %}
+                {% for l in listado %}
+                    <tr>
+                        <td style="text-align: center">{{ forloop.counter }}</td>
+                        <td style="text-align: center">{{ l.nombres }}</td>
+                    </tr>
+                {% endfor %}
                 </tbody>
             </table>
         </section>

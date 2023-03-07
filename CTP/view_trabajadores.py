@@ -24,17 +24,13 @@ def viewtrabajadores(request):
                         if encargado.objects.filter(nombres=request.POST['nombres']).exists():
                             messages.error(request, 'Registro ya existe')
                             return redirect('{}?action=agregar'.format(request.path))
-
                         else:
                             form = trabajadoresForm(request.POST)
-                            try:
-                                if form.is_valid():
+                            if form.is_valid():
                                     Encargado = encargado(nombres=form.cleaned_data['nombres'])
-                                    Encargado.save()
+                                    Encargado.save(request)
                                     messages.success(
                                         request, 'Registro Guardado Correctamente')
-                            except Exception as ex:
-                                messages.error(request, ex)
                     except Exception as ex:
                         messages.error(request, ex)
 
@@ -43,7 +39,7 @@ def viewtrabajadores(request):
                     try:
                         id = request.POST['id']
                         Encargado = encargado.objects.get(id=id)
-                        form = trabajadoresForm(request.POST, instance=encargado)
+                        form = trabajadoresForm(request.POST, instance=Encargado)
                         if form.is_valid():
                             form.save()
                             messages.success(request, 'El registro se editó correctamente')
@@ -55,11 +51,11 @@ def viewtrabajadores(request):
             elif action == 'pdflistado':
                 with transaction.atomic():
                     try:
-                        data['pdf'] = encargado.objects.get(id=request.GET['id'])
+                        data['action'] = encargado.objects.get(id=request.GET['id'])
                         template = get_template('pdf/trabajadores/listadoM.html')
                         return JsonResponse({'data': template.render(data)})
                     except Exception as ex:
-                        mensaje = ex
+                        messages.error(request, ex)
                         return JsonResponse({"mensaje": mensaje})
 
             elif action == 'eliminar':
@@ -88,7 +84,7 @@ def viewtrabajadores(request):
                 try:
                     data['id'] = id = request.GET['id']
                     Encargado = encargado.objects.get(id=id)
-                    form = trabajadoresForm(initial=model_to_dict(encargado))
+                    form = trabajadoresForm(initial=model_to_dict(Encargado))
                     data['formulario'] = form
                     return render(request, 'trabajadores/formulario.html', data)
                 except Exception as ex:
@@ -106,13 +102,14 @@ def viewtrabajadores(request):
             elif action == 'consultar':
                 try:
                     resultado = True
-                    data['encargados'] = Encargado = encargado.objects.get(id=request.GET['id'])
+                    data['id'] = id = request.GET['id']
+                    data['encargado'] = Encargado = encargado.objects.get(id=id)
                     template = get_template('trabajadores/listadoajax.html')
-                    return JsonResponse({'result': resultado, 'data': template.render(data)})
+                    return JsonResponse({"result": resultado, 'data': template.render(data)})
                 except Exception as ex:
                     resultado = False
                     mensaje = ex
-                    return JsonResponse({'result': resultado, 'mensaje': mensaje})
+                    return JsonResponse({"result": resultado, 'mensaje': mensaje})
 
             return redirect('/trabajadores/')
     try:

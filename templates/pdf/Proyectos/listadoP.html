@@ -68,6 +68,10 @@
                 <thead style="background-color: #333333">
                 <tr style="font-size: 20px;">
                     <th style="text-align: center; width: 20%; background-color: #3498DB;" >
+                        #
+                    </th>
+
+                    <th style="text-align: center; width: 20%; background-color: #3498DB;" >
                         Observación
                     </th>
                     <th style="text-align: center; width: 20%; background-color: #3498DB;" >
@@ -81,6 +85,7 @@
                 <tbody>
                 {% for proyecto in listado %}
                     <tr style="font-size: 20px;">
+                    <td style="text-align: center">{{ forloop.counter }}</td>
                     <td style="text-align: center">{{ proyecto.nombre_proyecto }}</td>
                     <td style="text-align: center">{{ proyecto.lider }}</td>
                     <td style="text-align: center">{{ proyecto.encargados|join:", " }}</td>

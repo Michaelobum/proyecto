@@ -13,7 +13,7 @@ class ModeloBase(models.Model):
 
 
 class encargado(ModeloBase):
-    nombres = models.CharField(null=True, blank=True, max_length=10)
+    nombres = models.CharField(null=True, blank=True, max_length=100)
     def __str__(self):
         return self.nombres
 
@@ -23,7 +23,7 @@ class Proyectos(ModeloBase):
     lider = models.ForeignKey(encargado, on_delete=models.CASCADE, related_name='proyectos_lider')
     encargados = models.ManyToManyField(encargado, related_name='proyectos_encargados')
     def __str__(self):
-        return self.nombre_proyecto
+        return str(self.nombre_proyecto)
 
 class Tareas(ModeloBase):
     nombre_tarea = models.CharField(null=True, blank=True, max_length=100)

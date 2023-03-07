@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+
     <a class="btn btn-success" href="{{ ruta }}?action=agregar"><i class="fa fa-plus-circle"></i> Agregar Nuevo</a>
     <a class="btn btn-danger" href="{{ ruta }}?action=pdflistado" target="_blanck"><i class="fa fa-file-pdf-o"> Descargar Pdf</i> </a>
     <br>
@@ -10,10 +11,10 @@
             <thead class=" table-dark ">
             <tr>
                 <th style="text-align: center" scope="col">
-                    Observación
+                    Nombre
                 </th>
                 <th style="text-align: center" scope="col">
-                    Encargado
+                    Lider
                 </th>
                 <th style="text-align: center" scope="col">
                     Integrantes
@@ -47,7 +48,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="label">Consulta de Producto</h4>
+                    <h4 class="modal-title" id="label">Consulta de Proyectos</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

@@ -31,7 +31,7 @@ def viewTareas(request):
                                                 encargados=form.cleaned_data['encargados'])
                                 tareas.save(request)
                                 messages.success(
-                                    request, 'Tareas Guardado Correctamente chingadamadre')
+                                    request, 'Tarea Guardada Correctamente')
                     except Exception as ex:
                         messages.error(request, ex)
 
@@ -43,7 +43,7 @@ def viewTareas(request):
                         form = TareasForm(request.POST, instance=tareas)
                         if form.is_valid():
                             form.save()
-                            messages.success(request, 'Tareas guardado exitosamente chingadamadre!')
+                            messages.success(request, 'Tarea guardada exitosamente!')
                     except Exception as ex:
                         messages.error(request, ex)
 

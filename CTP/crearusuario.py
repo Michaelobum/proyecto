@@ -7,7 +7,7 @@ def crear_superusuario(request):
         password1 = request.POST['password1']
         password2 = request.POST['password2']
         if password1 != password2:
-            error = 'Las contraseñas no coinciden'
+            error = 'Las contraseñas no coinciden, porfavor intentelo de nuevo'
             return render(request, 'registration/pruebas.html', {'error': error})
         User.objects.create_superuser(username=username, password=password1)
         return render(request, 'registration/login.html')

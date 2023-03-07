@@ -22,7 +22,7 @@ class TareasForm(forms.ModelForm):
             'nombre_tarea': forms.TextInput(attrs={'class': 'form-control'}),
             'encargados': forms.Select(attrs={'class': 'form-control'})
         }
-        labels = {'nombre_tarea': 'nombre_tarea', 'encargados': 'encargados'}
+        labels = {'nombre_tarea': 'nombre_tarea', 'encargados': 'lider'}
 
 class ProjectForm(forms.ModelForm):
     class Meta:

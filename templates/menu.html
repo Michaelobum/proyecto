@@ -3,8 +3,8 @@
 {% block content %}
 
     <div class="jumbotron">
-        <h1><i class="fa fa-home"></i> Bienvenido</h1>
-        <p class="lead">Sistema para control de tareas y proyectos <b style="font-size: x-large">CWP</b>.</p>
+        <h1><i class="fa fa-home"></i> Bienvenido: {{ user.username }}</h1>
+        <p class="lead">Sistema para control de tareas y proyectos <b style="font-size: x-large">CTP</b>.</p>
     </div>
 
     <div class="my-3 p-3 bg-white rounded shadow-sm">
@@ -12,12 +12,18 @@
         <div class="media text-muted pt-3">
             <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray" style="font-size: 14px;">
                 <strong class="d-block text-gray-dark"><i class="fa fa-users"></i> Encargados</strong>
-                Total registrado {{ totalmar }}.
+                Total registrado {{ totalencarga }}.
             </p>
         </div>
         <div class="media text-muted pt-3">
             <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray" style="font-size: 14px;">
                 <strong class="d-block text-gray-dark"><i class="fa fa-folder"></i> Tareas</strong>
+                Total registrado {{ totalta }}.
+            </p>
+        </div>
+        <div class="media text-muted pt-3">
+            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray" style="font-size: 14px;">
+                <strong class="d-block text-gray-dark"><i class="fa fa-folder"></i> Proyectos</strong>
                 Total registrado {{ totalpro }}.
             </p>
         </div>
@@ -31,7 +37,6 @@
 {% block js %}
     <script src="/static/js/dashboard.js"></script>
     <script>
-
         function eliminarprov(id) {
             Swal.fire({
                 title: 'Esta seguro de querer eliminar todos estos registros?',

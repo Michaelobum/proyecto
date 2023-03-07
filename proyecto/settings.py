@@ -27,6 +27,8 @@ DEBUG = True
 ALLOWED_HOSTS = ['192.168.100.102', '127.0.0.1']
 
 # Application definition
+SESSION_COOKIE_AGE = 300 # segundos
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 INSTALLED_APPS = [
     'django.contrib.admin',

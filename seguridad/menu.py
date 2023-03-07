@@ -7,10 +7,12 @@ from django.contrib.auth.decorators import login_required
 def menuinicial(request):
     data = {
         'ruta': '/',
-        'empresa': 'CWP',
+        'empresa': 'CTP',
         'nombre': 'Inicio',
-        'totalmar': encargado.objects.all().count(),
-        'totalpro': Tareas.objects.all().count()
+        'totalencarga': encargado.objects.all().count(),
+        'totalta': Tareas.objects.all().count(),
+        'totalpro': Proyectos.objects.all().count(),
+        'user': request.user
     }
 
     return render(request, 'menu.html', data)

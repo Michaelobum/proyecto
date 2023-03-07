@@ -19,12 +19,11 @@ height: 100%;
 }
 </style>
     <head>
-        <link rel="icon" type="image/jpg" href="/static/icono/la-seguridad-cibernetica.ico"/>
+        <link rel="icon" type="image/jpg" href="{{ MEDIA_URL }}/media/imagenes/logo.png"/>
         <meta charset="utf-8"/>
         <title>Login</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.min.css" %}">
-        <link rel="icon" type="image/jpg" href="/static/icono/la-seguridad-cibernetica.ico"/>
         <title>{{ nombre }} | {{ empresa }}</title>
         <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
         <link rel="stylesheet" href="/static/css/font-awesome.min.css">
@@ -71,7 +70,7 @@ height: 100%;
           <!-- Email input -->
           <div class="form-outline mb-4">
             <input type="text" name="username" class="form-control form-control-lg"
-              placeholder="Enter a valid email address" />
+              placeholder="Enter username" />
             <label class="form-label" for="form3Example3">Email address</label>
           </div>
 
@@ -109,8 +108,6 @@ height: 100%;
                     <div class="text-white mb-3 mb-md-0">
                       Copyright © 2020. All rights reserved.
                     </div>
-                    <!-- Copyright -->
-
                     <!-- Right -->
                     <div>
                       <a href="#!" class="text-white me-4">

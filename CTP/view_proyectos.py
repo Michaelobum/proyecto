@@ -13,7 +13,6 @@ from CTP.models import Proyectos, encargado
 def viewProyectos(request):
     data = {'empresa': 'Michael', 'nombre': 'Proyectos', 'ruta': '/Proyectos/'}
     proyecto = None
-    data = {}
 
     if request.method == 'POST':
         if 'action' in request.POST:
@@ -33,7 +32,7 @@ def viewProyectos(request):
                                 encargados = form.cleaned_data['encargados']
                                 proyecto.encargados.set(encargados)
                                 messages.success(
-                                    request, 'Tareas Guardado Correctamente chingadamadre')
+                                    request, 'Proyecto Guardado Correctamente')
                     except Exception as ex:
                         messages.error(request, ex)
 
@@ -49,7 +48,7 @@ def viewProyectos(request):
                         form = ProjectForm(request.POST, instance=proyecto)
                         if form.is_valid():
                             form.save()
-                            messages.success(request, 'Proyectos guardado exitosamente chingadamadre!')
+                            messages.success(request, 'Proyectos guardado exitosamente!')
                     except Exception as ex:
                         messages.error(request, ex)
 
@@ -139,6 +138,7 @@ def viewProyectos(request):
         for proyecto in proyectos:
             encargados = [e.nombres for e in proyecto.encargados.all()]
             data['listado'].append({
+                'cont': 0,
                 'pk': proyecto.pk,
                 'nombre_proyecto': proyecto.nombre_proyecto,
                 'lider': proyecto.lider.nombres,
